@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { RedisModule } from './redis/redis.module';
+import { MyRedisModule } from './redis/redis.module';
 
 @Module({
-  imports: [RedisModule]
+  imports: [MyRedisModule]
 })
 export class CacheModule {}
