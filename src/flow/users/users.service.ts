@@ -2,7 +2,7 @@
  * @Author: niuwenzheng
  * @Date: 2020-04-04 13:27:39
  * @LastEditors: niuwenzheng
- * @LastEditTime: 2020-04-22 12:13:35
+ * @LastEditTime: 2020-04-22 12:19:42
  * @Description: file content
  */
 import { Model } from 'mongoose';
@@ -11,7 +11,6 @@ import { Injectable } from '@nestjs/common';
 
 import { Users } from './interfaces/users.interface';
 import { CreateUsersDto } from './dto/create-users.dto';
-import { from } from 'rxjs';
 @Injectable()
 export class UsersService {
   constructor(@InjectModel('Users') private readonly usersModel: Model<Users>) {}
