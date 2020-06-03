@@ -4,8 +4,8 @@ import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('upload-files')
 export class UploadFilesController {
-  @Post()
   @UseInterceptors(FileInterceptor('file'))
+  @Post()
   async uploadFile(@UploadedFile() file) {
     console.log(file);
     /* {
@@ -17,6 +17,6 @@ export class UploadFilesController {
      * size: 2918
      * }
      */
-    return 'asdasd';
+    return 'UploadedFile succeed';
   }
 }
