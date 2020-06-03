@@ -10,9 +10,10 @@ import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module'; // 数据库
 import { CacheModule } from './cache/cache.module'; // 缓存 
 import { FlowModule } from './flow/flow.module'; // 业务模块
+import { UploadFilesModule } from './upload-files/upload-files.module';
 
 @Module({
-  imports: [DatabaseModule, CacheModule, FlowModule],
+  imports: [DatabaseModule, CacheModule, FlowModule, UploadFilesModule],
   controllers: [AppController],
   providers: [AppService],
 })
