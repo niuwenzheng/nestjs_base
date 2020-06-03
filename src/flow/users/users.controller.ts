@@ -16,16 +16,16 @@ export class UsersController {
   async create(@Body( new ValidationPipe() ) createUsersInfo: CreateUsersDto) {
     const userId = await this.idService.createUserId();
     createUsersInfo.user_id = userId;
-    return this.usersService.create(createUsersInfo);
+    return await this.usersService.create(createUsersInfo);
   }
 
   @Get()
   async findAll(): Promise<Users[]> {
-    return this.usersService.findAll();
+    return await this.usersService.findAll();
   }
 
   @Get('/:user_id')
   async findByUserId(@Param('user_id') user_id): Promise<Users> {
-    return this.usersService.findByUserId(user_id);
+    return await this.usersService.findByUserId(user_id);
   }
 }
