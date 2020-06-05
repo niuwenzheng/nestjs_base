@@ -4,6 +4,6 @@ import { Injectable } from '@nestjs/common';
 export class TestService {
    // 查询全部数据
    async testTest(): Promise<any> {
-    return '测试接口';
+    return '测试接口fff';
   }
 }
