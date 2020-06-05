@@ -24,10 +24,11 @@ const initDictionary = (filepath, callback) => {
 const SensitiveWordsManager = function(dict) {
   this.dictionary = dict;
   this.createNode = function(char, flag, nodes) {
-    const node = {};
-    node.char = char;
-    node.flag = flag == null ? 0 : flag;
-    node.nodes = nodes;
+    const node = {
+      char,
+      flag: flag == null ? 0 : flag,
+      nodes,
+    };
   };
 
   //创建字典树
@@ -68,10 +69,11 @@ const SensitiveWordsManager = function(dict) {
     return result;
   };
   this.createNode = (char, flag, nodes) => {
-    const node = {};
-    node.char = char;
-    node.flag = flag;
-    node.nodes = nodes == null ? {} : nodes;
+    const node = {
+      char,
+      flag,
+      nodes: nodes == null ? {} : nodes
+    };
     return node;
   };
 
