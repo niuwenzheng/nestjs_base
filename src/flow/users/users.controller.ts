@@ -1,12 +1,11 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 
 import { ValidationPipe } from '../validation.pipe'
+import {IdService} from '../../database/id.service'
 
 import { UsersService } from './users.service';
-
 import { CreateUsersDto } from './dto/create-users.dto';
 import { Users } from './interfaces/users.interface';
-import {IdService} from '../../database/id.service'
 
 @Controller('users')
 export class UsersController {

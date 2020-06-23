@@ -2,8 +2,8 @@
  * @Author: niuwenzheng
  * @Date: 2020-04-04 13:27:39
  * @LastEditors: niuwenzheng
- * @LastEditTime: 2020-04-22 12:19:42
- * @Description: file content
+ * @LastEditTime: 2020-06-23 12:28:31
+ * @Description: 用户
  */
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
