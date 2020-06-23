@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
+import { httpErrCode } from '../../httpErrCode';
 
 @Injectable()
 export class TestService {
-   // 查询全部数据
-   async testTest(): Promise<any> {
-    return '测试接口fff';
+  // 查询全部数据
+  async testTest(): Promise<any> {
+    throw new BadRequestException(httpErrCode.err_test);
   }
 }

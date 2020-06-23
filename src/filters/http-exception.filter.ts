@@ -14,14 +14,8 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const response = ctx.getResponse();
     const request = ctx.getRequest();
 
-    const message = exception.message;
-    Logger.log('错误提示11', JSON.stringify(exception));
-
-    Logger.log('错误提示', message);
     const errorResponse = {
-      data: {
-        error: message,
-      }, 
+      data: exception.getResponse(),
       message: '请求失败',
       code: 1, // 自定义code
       url: request.originalUrl, // 错误的url地址
