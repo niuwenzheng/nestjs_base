@@ -33,6 +33,7 @@
     "class-transformer": "^0.2.3",
     "class-validator": "^0.12.1",
     "cross-env": "^7.0.2",
+    "crypto-js": "^4.0.0",
     "currency.js": "^1.2.2",
     "decimal.js": "^10.2.0",
     "moment": "^2.27.0",

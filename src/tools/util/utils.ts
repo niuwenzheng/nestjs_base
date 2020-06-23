@@ -2,13 +2,12 @@
  * @Author: niuwenzheng
  * @Date: 2020-06-04 19:50:32
  * @LastEditors: niuwenzheng
- * @LastEditTime: 2020-06-04 20:39:22
+ * @LastEditTime: 2020-06-23 10:58:26
  * @Description: 基础工具
  */
 
 import * as moment from 'moment';
-import * as xml2js from 'xml2js';
-import * as currency from 'currency.js';
+import xml2js = require('xml2js');
 /**
  * @description: 同步睡眠
  * @param {number} ms 毫秒数
@@ -36,10 +35,7 @@ const isEmpty = (value: any) => {
  * @return: object
  */
 const clone = (obj: object): object => {
-  // Handle the 3 simple types, and null or undefined
   if (null == obj || 'object' != typeof obj) return obj;
-
-  // Handle Date
   if (obj instanceof Date) {
     const copy = new Date();
     copy.setTime(obj.getTime());
@@ -233,13 +229,14 @@ const randomPhoneNum = (count: number): string[] => {
  * @param {string} xml
  * @return: Promise<object>
  */
-const parseXML = (xml: string): Promise<object> =>
-  new Promise((resolve, reject) => {
+const parseXML = (xml: string): Promise<object> => {
+  return new Promise((resolve, reject) => {
     const opt = { trim: true, explicitArray: false, explicitRoot: false };
     xml2js.parseString(xml, opt, (err, res) =>
       err ? reject(new Error('XMLDataError')) : resolve(res || {}),
     );
   });
+};
 
 /**
  * @description: 向上取整, 保留n位小数并格式化输出（不足的部分补0）
@@ -308,10 +305,11 @@ export {
   size,
   objKeySort,
   getUnixTimestamp,
+  getTimestamp,
   getRandomNumber,
   getRandomItem,
   getRandomItems,
   randomPhoneNum,
   parseXML,
-  ceilFloat
+  ceilFloat,
 };
