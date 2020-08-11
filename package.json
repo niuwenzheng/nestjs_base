@@ -29,6 +29,7 @@
     "@nestjs/swagger": "^4.5.10",
     "@types/mathjs": "^6.0.5",
     "@types/moment": "^2.13.0",
+    "@types/mongoose": "^5.7.36",
     "@types/xml2js": "^0.4.5",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.12.1",
