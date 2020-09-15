@@ -2,13 +2,13 @@
 $ npm install
 ```
 
-## 增加命令
-### 增加模块
+# 一：增加命令
+## 增加模块
 ```bash
 $ nest g m xxx
 $ nest g m flow/xxx
 ```
-### 增加控制器
+## 增加控制器
 ```bash
 $ nest g co xxx
 $ nest g co flow/xxx
@@ -26,7 +26,24 @@ class（别名：cl）
 管道（别名：pi）
 提供者（别名：pr）
 服务（别名：s）
-## Running the app
+
+# 二：文件结构
+> ### client web客户端
+>> ### src 主要逻辑
+>>> 1. cache 缓存模块
+>>> 2. database 数据库模块
+>>> 3. filters 过滤模块
+>>> 4. flow 业务模块（建议业务写到此文件夹下）
+>>> 5. httpErrCode 错误返回码模块
+>>> 6. interceptor 拦截器文件
+>>> 7. middleware 中间件
+>>> 8. SDK 外接的SDK
+>>> 9. tools 工具模块
+>>> 10. types 非ts模块的声明文件
+>>> 11. upload-files 上传文件模块
+## —— test 测试
+
+
 
 ```bash
 # development
