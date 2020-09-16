@@ -2,7 +2,7 @@
  * @Author: niuwenzheng
  * @Date: 2020-04-04 13:27:39
  * @LastEditors: nevin
- * @LastEditTime: 2020-09-16 15:10:34
+ * @LastEditTime: 2020-09-16 15:33:37
  * @Description: 用户
  */
 import { Model } from 'mongoose';
@@ -10,12 +10,11 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Injectable } from '@nestjs/common';
 
 import { IdService } from '../../database/id.service';
-import { Users } from './interfaces/users.interface';
-import { CreateUsersDto } from './dto/create-users.dto';
+import { CreateUsers, Users, UsersModel } from './interfaces/users.interface';
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectModel('Users') private readonly usersModel: Model<Users>,
+    @InjectModel('Users') private readonly usersModel: Model<UsersModel>,
     private readonly idService: IdService,
   ) {}
 
@@ -33,8 +32,9 @@ export class UsersService {
    * @return:
    */
 
-  async create(createUsersInfo: CreateUsersDto): Promise<Users> {
-    const createdUser = new this.usersModel(createUsersInfo);
+  async create(createUsersInfo: CreateUsers): Promise<Users> {
+    const newUserInfo: Users = {...createUsersInfo, user_id: (await this.createUserId()) as string}
+    const createdUser = new this.usersModel(newUserInfo);
     return await createdUser.save();
   }
 
