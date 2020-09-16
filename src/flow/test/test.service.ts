@@ -1,6 +1,6 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
+import { errHttpBack } from 'src/filters/http-exception.back-code';
 import { AppHttpException } from 'src/filters/http-exception.filter';
-import { errHttpBack } from 'src/httpErrCode';
 
 @Injectable()
 export class TestService {
