@@ -2,7 +2,7 @@
  * @Author: niuwenzheng
  * @Date: 2020-04-04 13:27:39
  * @LastEditors: nevin
- * @LastEditTime: 2020-09-16 15:33:37
+ * @LastEditTime: 2020-09-16 15:44:27
  * @Description: 用户
  */
 import { Model } from 'mongoose';
@@ -11,6 +11,7 @@ import { Injectable } from '@nestjs/common';
 
 import { IdService } from '../../database/id.service';
 import { CreateUsers, Users, UsersModel } from './interfaces/users.interface';
+import { TimeToolsService } from 'src/app-tools/time-tools.service';
 @Injectable()
 export class UsersService {
   constructor(
@@ -33,7 +34,11 @@ export class UsersService {
    */
 
   async create(createUsersInfo: CreateUsers): Promise<Users> {
-    const newUserInfo: Users = {...createUsersInfo, user_id: (await this.createUserId()) as string}
+    const newUserInfo: Users = {
+      ...createUsersInfo, 
+      user_id: (await this.createUserId()) as string,
+      create_time: TimeToolsService.getTimestamp()
+    }
     const createdUser = new this.usersModel(newUserInfo);
     return await createdUser.save();
   }

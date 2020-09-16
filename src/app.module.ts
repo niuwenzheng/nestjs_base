@@ -14,6 +14,8 @@ import { FlowModule } from './flow/flow.module'; // 业务模块
 import { UploadFilesModule } from './upload-files/upload-files.module'; // 上传文件模块
 import { ServeStaticModule } from '@nestjs/serve-static';
 
+import { AppToolsModule } from './app-tools/app-tools.module'; // 应用工具
+
 @Module({
   imports: [
     DatabaseModule,
@@ -23,6 +25,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'client'),
     }),
+    AppToolsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
