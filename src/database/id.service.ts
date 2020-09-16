@@ -20,11 +20,12 @@ export class IdService {
   constructor(@InjectModel('Id') private readonly idModel: Model<Id>) {}
 
   /**
-   * @description: 创建数据
-   * @param {CreateIDDto} createUsersDto id对象
-   * @return:
+   * @description: 创建id
+   * @param {string} id_name id名称
+   * @param {number} id_value id
+   * @return: Promise<number>
    */
-  async _createId(id_name: string, id_value: number): Promise<number> {
+  public async createId(id_name: string, id_value: number, id_type = "string"): Promise<string | number> {
     const fadArgs = {
       query: {
         id_name,
@@ -41,11 +42,7 @@ export class IdService {
     }
     const createdUser = new this.idModel({ id_name, id_value });
     newId = await createdUser.save();
-    return newId.id_value;
-  }
 
-  async createUserId(): Promise<string> {
-    const newUserID = await this._createId('users', 10000);
-    return newUserID.toString();
+    return id_type === "string" ? (newId.id_value).toString() : newId.id_value;
   }
 }
