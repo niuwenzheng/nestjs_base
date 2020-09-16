@@ -14,4 +14,9 @@ export class TestController {
   async testTest(): Promise<any> {
     return await this.testService.testTest();
   }
+
+  @Get('/hhh')
+  async testTestHhhh(): Promise<any> {
+    return await this.testService.testTestHhhh();
+  }
 }

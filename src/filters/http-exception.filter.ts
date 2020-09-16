@@ -7,31 +7,30 @@ import {
   Logger,
 } from '@nestjs/common';
 
+import { errHttpBackMap } from './http-exception.back-code';
+
+errHttpBackMap.set('1', '请求失败');
+
+export class AppHttpException extends HttpException {
+  constructor(errCode: string) {
+    super(errCode, HttpStatus.OK);
+  }
+}
+
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
     const request = ctx.getRequest();
-    const message = exception.message;
+    const messageCode = errHttpBackMap.get(exception.message) ? exception.message : '1';
 
-    let messageObj = {
-      errCode: 1,
-      errMsg: '请求失败',
-    };
-    
-    try {
-      messageObj = JSON.parse(message);
-    } catch (error) {
-      Logger.error('报错返回值出错', error);
-    }
+    Logger.log('错误提示:', messageCode + ':' + errHttpBackMap.get(messageCode));
 
-    Logger.log('错误提示', message);
-    
     const errorResponse = {
       data: exception.getResponse(),
-      message: messageObj.errMsg,
-      code: messageObj.errCode, // 自定义code
+      message: errHttpBackMap.get(messageCode),
+      code: messageCode, // 自定义code
       url: request.originalUrl, // 错误的url地址
     };
     const status =

@@ -2,7 +2,7 @@
  * @Author: niuwenzheng
  * @Date: 2020-08-24 22:51:56
  * @LastEditors: nevin
- * @LastEditTime: 2020-09-16 16:31:00
+ * @LastEditTime: 2020-09-16 17:15:16
  * @Description: http业务错误返回
  */
 import { HttpException, HttpStatus } from '@nestjs/common';
@@ -15,8 +15,7 @@ export class AppHttpException extends HttpException {
 }
 
 export const errHttpBack = {
-  err_no_power_login: new AppHttpException(40010, '您无权登录'),
-
-  err_no_book_power: new AppHttpException(20010, '您无权操作该书籍'),
-  err_up_section_no_over: new AppHttpException(20011, '上一章还未完成'),
+  err_no_power_login: '40010',
+  err_no_book_power: '20010',
+  err_up_section_no_over: '20011',
 };
