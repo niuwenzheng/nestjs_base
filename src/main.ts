@@ -2,10 +2,15 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
-declare const module: any;
 
+// ------------- 热重载 STR ---------------
+declare const module: any;
+// ------------- 热重载 STR ---------------
+
+// ------------- 全局注册错误的过滤器 STR-------------
 import { HttpExceptionFilter } from './filters/http-exception.filter';
 import { TransformInterceptor } from './interceptor/transform.interceptor';
+// ------------- 全局注册拦截器 END-------------
 
 // ------------- 文档插件 STR ---------------
 function createSwagger(app: INestApplication) {
