@@ -34,13 +34,12 @@ class（别名：cl）
 >>> 2. database 数据库模块
 >>> 3. filters 过滤模块
 >>> 4. flow 业务模块（建议业务写到此文件夹下）
->>> 5. httpErrCode 错误返回码模块
->>> 6. interceptor 拦截器文件
->>> 7. middleware 中间件
->>> 8. SDK 外接的SDK
->>> 9. tools 工具模块
->>> 10. types 非ts模块的声明文件
->>> 11. upload-files 上传文件模块
+>>> 5. interceptor 拦截器文件
+>>> 6. middleware 中间件
+>>> 7. SDK 外接的SDK
+>>> 8. tools 工具模块
+>>> 9. types 非ts模块的声明文件
+>>> 10. upload-files 上传文件模块
 ## —— test 测试
 
 
