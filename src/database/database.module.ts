@@ -5,12 +5,12 @@ import { IdService } from './id.service';
 @Global()
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://148.70.247.183:27017/app_server', {
+    MongooseModule.forRoot('mongodb://148.70.247.183:27017/test_my', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: true,
-      user: 'nevin',
-      pass: '900301'
+      user: 'test',
+      pass: '123456'
     }),
     MongooseModule.forFeature([{ name: 'Id', schema: IdSchema }])
   ],
