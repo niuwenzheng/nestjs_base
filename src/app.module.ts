@@ -39,7 +39,10 @@ export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(SignMiddleware)
-      .exclude({ path: 'api/upload-files', method: RequestMethod.POST }) // 多个过滤多个参数
+      .exclude(
+        { path: 'api/upload-files', method: RequestMethod.POST },
+        'api/test',
+      ) // 多个过滤多个参数
       .forRoutes('*')
 
       .apply(LogMiddleware)
