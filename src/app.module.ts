@@ -1,4 +1,9 @@
-import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
+import {
+  Module,
+  NestModule,
+  MiddlewareConsumer,
+  RequestMethod,
+} from '@nestjs/common';
 import { join } from 'path';
 
 // ----- 中间件 STR------
@@ -34,7 +39,9 @@ export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(SignMiddleware)
+      .exclude({ path: 'api/upload-files', method: RequestMethod.POST }) // 多个过滤多个参数
       .forRoutes('*')
+
       .apply(LogMiddleware)
       .forRoutes('users');
   }

@@ -1,8 +1,7 @@
 import { Controller, Get, Post, Body, Param, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 
-
-@Controller('upload-files')
+@Controller('api/upload-files')
 export class UploadFilesController {
   @UseInterceptors(FileInterceptor('file'))
   @Post()
