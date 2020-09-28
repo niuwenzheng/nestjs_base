@@ -23,16 +23,41 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
     const request = ctx.getRequest();
-    const messageCode = errHttpBackMap.get(exception.message) ? exception.message : '1';
-
-    Logger.log('错误提示:', messageCode + ':' + errHttpBackMap.get(messageCode));
 
     const errorResponse = {
       data: exception.getResponse(),
-      message: errHttpBackMap.get(messageCode),
-      code: messageCode, // 自定义code
+      message: '',
+      errCode: '', // 自定义code
       url: request.originalUrl, // 错误的url地址
     };
+
+    const errObj = exception.getResponse() as {
+      message?: '';
+      statusCode?: '';
+      error?: '';
+    };
+
+    if (typeof errObj === 'object') {
+      errorResponse.data = errObj;
+      errorResponse.message = errObj.message || '服务器异常';
+      errorResponse.errCode = errObj.error || '1';
+    }
+
+    if (typeof errObj === 'string') {
+      const messageCode = errHttpBackMap.get(exception.message)
+        ? exception.message
+        : '1';
+
+      errorResponse.data = '';
+      errorResponse.message = errHttpBackMap.get(messageCode);
+      errorResponse.errCode = messageCode;
+    }
+
+    Logger.log(
+      '错误提示:',
+      errorResponse.errCode + ':' + errorResponse.message,
+    );
+
     const status =
       exception instanceof HttpException
         ? exception.getStatus()
