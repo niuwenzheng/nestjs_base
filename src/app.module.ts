@@ -20,6 +20,7 @@ import { UploadFilesModule } from './upload-files/upload-files.module'; // 上�
 import { ServeStaticModule } from '@nestjs/serve-static';
 
 import { AppToolsModule } from './app-tools/app-tools.module'; // 应用工具
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { AppToolsModule } from './app-tools/app-tools.module'; // 应用工具
       rootPath: join(__dirname, '..', 'client'),
     }),
     AppToolsModule,
+    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService],

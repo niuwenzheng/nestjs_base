@@ -5,14 +5,21 @@ $ npm install
 # 一：增加命令
 ## 增加模块
 ```bash
-$ nest g m xxx
-$ nest g m flow/xxx
+$ nest g mo xxx
+$ nest g module xxx
+$ nest g mo flow/xxx
 ```
 ## 增加控制器
 ```bash
 $ nest g co xxx
 $ nest g co flow/xxx
 ```
+## 增加服务
+```bash
+$ nest g service xxx
+$ nest g s flow/xxx
+```
+
 class（别名：cl）
 控制器（别名：co）
 装饰者（别名：d）
