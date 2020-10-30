@@ -40,6 +40,8 @@ class（别名：cl）
 >>> 1. cache 缓存模块
 >>> 2. database 数据库模块
 >>> 3. filters 过滤模块
+>>>> (1) http-exception.filter.ts 错误返回
+>>>> (2) http-exception.back-code.ts 错误码
 >>> 4. flow 业务模块（建议业务写到此文件夹下）
 >>> 5. interceptor 拦截器文件
 >>> 6. middleware 中间件
@@ -47,6 +49,7 @@ class（别名：cl）
 >>> 8. tools 工具模块
 >>> 9. types 非ts模块的声明文件
 >>> 10. upload-files 上传文件模块
+>>> 11. mail 邮件服务模块
 ## —— test 测试
 
 
