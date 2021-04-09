@@ -1,8 +1,8 @@
 /*
  * @Author: niuwenzheng
  * @Date: 2020-06-04 19:50:32
- * @LastEditors: niuwenzheng
- * @LastEditTime: 2020-06-23 10:58:26
+ * @LastEditors: nevin
+ * @LastEditTime: 2021-04-09 15:42:44
  * @Description: 基础工具
  */
 
@@ -162,14 +162,14 @@ const getRandomItems = (list: any[], count: number): any[] => {
   if (count > list.length) {
     return list;
   }
-  const indexes = [];
+  const indexes: any[] = [];
   while (indexes.length < count) {
     const randomIndex = getRandomNumber(list.length, 0);
     if (indexes.indexOf(randomIndex) < 0) {
       indexes.push(randomIndex);
     }
   }
-  const items = [];
+  const items: any[] = [];
   for (let i = indexes.length - 1; i >= 0; i--) {
     const itemOne = list[indexes[i]];
     items.push(itemOne);
@@ -183,7 +183,7 @@ const getRandomItems = (list: any[], count: number): any[] => {
  * @return: string[]
  */
 const randomPhoneNum = (count: number): string[] => {
-  const result = [];
+  const result: any[] = [];
   for (let i = 0; i < count; i++) {
     const phone2ndNums = {
       '3': ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
