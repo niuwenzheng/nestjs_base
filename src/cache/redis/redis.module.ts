@@ -1,15 +1,14 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { RedisModule } from 'nestjs-redis';
+import { CacheService } from './cache.service';
+import * as config from './config';
+const options = config.default();
 
-const options = {
-  port: 6379,
-  host: '127.0.0.1',
-  password: '',
-  db: 0,
-};
-
+@Global()
 @Module({
   imports: [RedisModule.register(options)],
+  providers: [CacheService],
+  exports: [CacheService],
 })
 
 export class MyRedisModule {}
