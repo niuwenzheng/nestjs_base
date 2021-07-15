@@ -5,12 +5,36 @@ import {
   HttpException,
   HttpStatus,
   Logger,
+  UnauthorizedException,
 } from '@nestjs/common';
 
 import { errHttpBackMap } from './http-exception.back-code';
 
 errHttpBackMap.set('1', '请求失败');
 
+// 临时解决不返回401 STR
+@Catch(Error)
+export class AuthExceptionFilter implements ExceptionFilter {
+  catch(error: Error, host: ArgumentsHost) {
+    const ctx = host.switchToHttp();
+    const response = ctx.getResponse();
+    const request = ctx.getRequest();
+
+    const errorResponse = {
+      data: '',
+      message: '',
+      errCode: '', // 自定义code
+      url: request.originalUrl, // 错误的url地址
+    };
+
+    if ((error.message = 'Unauthorized')) {
+      response.status(HttpStatus.UNAUTHORIZED);
+      response.header('Content-Type', 'application/json; charset=utf-8');
+      response.send(errorResponse);
+    }
+  }
+}
+// 临时解决不返回401 END
 export class AppHttpException extends HttpException {
   constructor(errCode: string) {
     super(errCode, HttpStatus.OK);
